@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  HW2.4
 //
 //  Created by Alexey Manokhin on 20.11.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
+final class MainViewController: UIViewController {
     let backgroundColor = UIColor(
         red: 0.175,
         green: 0.175,
@@ -126,9 +126,7 @@ final class ViewController: UIViewController {
     lazy var photosHStack = {
         let stack = UIStackView()
         stack.axis = .horizontal
-        stack.spacing = 10
-        stack.distribution = .fillProportionally
-        stack.heightAnchor.constraint(equalToConstant: view.bounds.width / 2 - 24).isActive = true
+        stack.distribution = .equalSpacing
         [getPhotoImageView(name: "Image4"),
          getPhotoImageView(name: "Image5")].forEach
         { stack.addArrangedSubview($0) }
@@ -145,8 +143,6 @@ final class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -201,6 +197,8 @@ final class ViewController: UIViewController {
         let imageView = UIImageView()
         imageView.image = UIImage(named: name)
         imageView.contentMode = .scaleToFill
+        imageView.heightAnchor.constraint(equalToConstant: view.bounds.width / 2 - 24).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: view.bounds.width / 2 - 24).isActive = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }
